@@ -1,5 +1,6 @@
 package com.bezkoder.springjwt.security.services;
 
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;

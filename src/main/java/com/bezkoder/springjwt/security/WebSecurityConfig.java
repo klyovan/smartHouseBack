@@ -57,8 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable()
 			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-			.authorizeRequests().antMatchers("/api/auth/**").permitAll()
-			.antMatchers("/api/test/**").permitAll()
+			.authorizeRequests().antMatchers("/api/auth/signin").permitAll()
 			.anyRequest().authenticated();
 		http.requiresChannel()
 			.requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)

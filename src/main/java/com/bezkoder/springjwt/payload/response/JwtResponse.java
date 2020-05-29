@@ -1,5 +1,6 @@
 package com.bezkoder.springjwt.payload.response;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class JwtResponse {

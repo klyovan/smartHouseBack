@@ -1,6 +1,10 @@
 package com.bezkoder.springjwt.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -31,6 +35,13 @@ public class User {
 	@NotBlank
 	@Size(max = 120)
 	private String password;
+
+	@JsonManagedReference
+	@OneToMany(  mappedBy = "user",
+		cascade = CascadeType.ALL,
+		orphanRemoval = true)
+	private List<Room> rooms = new ArrayList<>();
+
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(	name = "user_roles", 
@@ -85,5 +96,13 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public List<Room> getRooms() {
+		return rooms;
+	}
+
+	public void setRooms(List<Room> rooms) {
+		this.rooms = rooms;
 	}
 }
